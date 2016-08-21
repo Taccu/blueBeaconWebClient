@@ -7,11 +7,8 @@
  */
 Class Database
 {
-	private $host ='localhost';
-	private $str_user ='root';
-	private $str_db_name = 'blueBacon';
+	private $str_user ='myuser';
 	private $str_pw  = "";
-	private $db;
 	private $dsn="mysql:host=localhost;dbname=blueBacon";
 	
 function __construct()
