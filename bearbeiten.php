@@ -1,15 +1,32 @@
 <?php
     	echo "
 			<form action='' method='post'>
-			<p style='float: right; width: 150px'>Produktionsstatus:<br>
-								<input type='text' name='prostat' />
-							
-							<br>Wartungsstatus:<br>
-								<input type='text' name='mainstat' />
-								<br><input type='submit' value='Ändern' />
-							</p>
-							
-			Maschinen: <select name='machine' style='center: right; width 200px'>";
+			<table>
+			<tr>
+			<th><label for='prostat'>Produktionsstatus:</label></th>
+			<td>
+			<select id='prostat' name='prostat'>
+			<option selected='selected' disabled='disabled'>Bitte auswählen</option>
+			<option>OK</option>
+			<option>Wartung</option>
+			<option>NOK</option>
+			</select>
+			</td>
+			</tr>
+			<tr>
+			<th><label for='mainstat'>Wartungsstatus:</label></th>
+			<td>
+			<select id='mainstat' name='mainstat'>
+			<option selected='selected' disabled='disabled'>Bitte auswählen</option>
+			<option>OK</option>
+			<option>In Bearbeitung</option>
+			<option>NOK</option>
+			</select>
+			</td>
+			</tr>
+			<tr>
+			<th><label for='machine'>Maschinen:</label></th>
+			<td><select name='machine' style='center: right; width 200px'>";
 						$countmach = $machine_1->countmach();
 			
 		$allMachines = $machine_1->getjsonData();
@@ -20,7 +37,7 @@
 		
 	 	
 	 	if($countmach > 0)
-		{						
+		{	echo "<option selected='selected' disabled='disabled'>Bitte auswählen</option>";				
 			foreach ($allMachines as $line => $arr) 
 			{
 				$mach_id= $arr['MachineID'];	
@@ -32,10 +49,12 @@
 			}
 		}else
 			{
-				 echo "<option>Keine zum Löschen verfügbare Maschinen</option>" ;
+				 echo "<option>Keine Maschinen verfügbar</option>" ;
 			}	
 	
-			 echo "</select>";
+			 echo "</select></td></tr>
+			 </table>
+			<input class='btn add' type='submit' value='Ändern' />";
 			 
 		
 			
