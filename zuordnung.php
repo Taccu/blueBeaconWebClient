@@ -3,9 +3,12 @@
 	
 	 echo 
 			"<form action='' method='post'>
-			Beacons: <select name='beacons[]' multiple  style='lfet: right'>";
+			<table>
+			<tr>
+			<th><label for='beacons[]'>Beacons:</label></th>
+			<td><select id='beacons[]' multiple name='beacons[]' >";
 		$countBeac = $beacon_1->countBeac();
-		 $allBeacons = $beacon_1->getallBeacons();
+		$allBeacons = $beacon_1->getallBeacons();
 		$num= $countBeac;
 	
 			//die("tset". print_r($allBeacons,TRUE));
@@ -30,17 +33,18 @@
 		}
 	}else
 		{
-			 echo "<option>Keine zum Löschen verfügbare Beacons</option>" ;
+			 echo "<option>Keine Beacons verfügbar</option>" ;
 		} 
-			 echo "</select>";
+			 echo "</select></td></tr>";
 		
 	 	//alle Maschinen in einer Auswahliste darstellen
 	//$allMachines = $machine_1->getallMachines();
 		
 	 				
-			echo "
-			
-			Maschinen: <select name='machine' style='center: right'>";
+			echo 
+			"<tr>
+			<th><label for='machine'>Maschinen:</label></th>
+			<td><select id='machine' name='machine' style='center: right'>";
 						$countmach = $machine_1->countmach();
 			
 		$allMachines = $machine_1->getallMachines();
@@ -51,7 +55,7 @@
 		
 	 	
 	 	if($countmach > 0)
-		{						
+		{	echo "<option selected='selected' disabled='disabled'>Bitte auswählen</option>";				
 			foreach ($allMachines as $line => $arr) 
 			{
 				$mach_id= $arr['MachineID'];	
@@ -63,14 +67,14 @@
 			}
 		}else
 			{
-				 echo "<option>Keine zum Löschen verfügbare Maschinen</option>" ;
+				 echo "<option>Keine Maschinen verfügbar</option>" ;
 			}	
 	
-			 echo "</select>";
+			 echo "</select></td></table>";
 			 
 		
 			
-				echo "	<input type='submit' value='Zuordnen' />
+				echo "<input class='btn add' type='submit' value='Zuordnen' />
 				</form>"; 
 			
 			//Ausführung der Zuordung
@@ -82,6 +86,8 @@
 			
 				$zaehl=0;
 				$zaehl = count($str_ausgewaehlte_beacons);
+				
+			
 				//die(print_r($zaehl));
 				// Zuordnung wird nur bei 2 Ausgewählten Beacons durchgeführt
 				if($zaehl == 2)
@@ -99,10 +105,10 @@
 					
 				}elseif ($zaehl < 2)
 				{
-					echo "Bitte zwei Beacons Auswählen.";
+					echo "<div class='notif'><p>Bitte zwei Beacons Auswählen!</p></div>";
 				}elseif ($zaehl > 2)
 				{
-					echo "Bitte nur zwei Beacons Auswählen.";
+					echo "<div class='notif'><p>Bitte nur zwei Beacons Auswählen!</p></div>";
 				}	
 			}
 
