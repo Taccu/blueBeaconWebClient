@@ -104,8 +104,7 @@
 						echo "<script>$('#tab-3').load(document.URL +  ' #tab-3');</script>";
 					
 							//echo "<script>alert('Die Beacons wurden der Maschine zugeordnet')</script>"; 
-												//echo "<script>window.location.reload(); </script>";
-					
+											//	echo "<script>window.location.reload(); </script>";
 				}elseif ($zaehl < 2)
 				{
 					echo "<div class='notif'><p>Bitte zwei Beacons Auswählen!</p></div>";
