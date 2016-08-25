@@ -115,7 +115,12 @@
 	
 	#content .formBlock .machineInfo {
 		margin:0 10px;
-		color:#FFFFFF;
+		color:#FFFFFF !important;
+	}
+	
+	#content .formBlock .machineInfo table tr th,
+	#content .formBlock .machineInfo table tr td {
+		color:#FFFFFF !important;
 	}
 	
 	#content .formBlock .machineInfo .machineInfoHead {

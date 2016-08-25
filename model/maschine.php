@@ -116,7 +116,7 @@ private $str_status;
 			$pdo=null;
 			
 						//header("Location:".$_SERVER['PHP_SELF']);
-			echo "<script>alert('Maschine gelöscht')</script>"; 
+			 echo "<script>alert('Maschine gelöscht')</script>"; 
 						
 				
 		}

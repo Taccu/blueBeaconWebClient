@@ -100,8 +100,11 @@
 					  $beacon_1->setMachine($str_masch_id, $str_geschnitte_id);	
 					$machine_1->setgeadded($str_masch_id);
 					}
+					
+						echo "<script>$('#tab-3').load(document.URL +  ' #tab-3');</script>";
+					
 							//echo "<script>alert('Die Beacons wurden der Maschine zugeordnet')</script>"; 
-												echo "<script>window.location.reload(); </script>";
+												//echo "<script>window.location.reload(); </script>";
 					
 				}elseif ($zaehl < 2)
 				{

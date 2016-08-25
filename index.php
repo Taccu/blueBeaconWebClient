@@ -42,11 +42,11 @@ if (!empty($_POST['UUID']) and !empty($_POST['Minor']) and !empty($_POST['Major'
 	//Löchen eines Beacons
 	if(!empty($_POST['beac']))
 	{
-			$ausgew_beacon = $_POST['beac'];
+		$ausgew_beacon = $_POST['beac'];
 		$int_beac_id = substr($ausgew_beacon,0,strpos($ausgew_beacon," "));
 		//die(print_r($int_beac_id));
 		$beacon_1->deleteBeacon($int_beac_id);
-								echo "<script>window.location.reload(); </script>";
+								//echo "<script>window.location.reload(); </script>";
 		
 		
 	}
@@ -56,7 +56,7 @@ if (!empty($_POST['UUID']) and !empty($_POST['Minor']) and !empty($_POST['Major'
 		$ausgew_machine = $_POST['mach'];
 		$int_mach_id = substr($ausgew_machine,0,strpos($ausgew_machine," "));
 		$machine_1->deleteMachine($int_mach_id);
-												echo "<script>window.location.reload(); </script>";
+												//echo "<script>window.location.reload(); </script>";
 		
 	}
 	
@@ -172,7 +172,7 @@ if (!empty($_POST['UUID']) and !empty($_POST['Minor']) and !empty($_POST['Major'
 					<div class="headLineBottom">
 						<ul class="tabs">
 							<li>
-								<a href="#tab-1">Bearbeiten</a>
+								<a href="#tab-1">Hinzufügen</a>
 							<!--<a href="ubersicht.php">Übersicht</a> -->
 							</li>
 							<li>
@@ -196,6 +196,7 @@ if (!empty($_POST['UUID']) and !empty($_POST['Minor']) and !empty($_POST['Major'
 					
 					<!-- TAB 1 START -->
 					<div id="tab-1" class="innerTabcontent">
+					<script>$('#tab-1').load(document.URL +  ' #tab-1');</script>
 						<!-- <script>
 							$('#tab-1').load(document.URL +  ' #tab-1');
 							//window.location.reload();
@@ -309,6 +310,7 @@ if (!empty($_POST['UUID']) and !empty($_POST['Minor']) and !empty($_POST['Major'
 					
 					<!-- TAB 2 START -->
 					<div id="tab-2">
+					<script>$('#tab-2').load(document.URL +  ' #tab-2');</script>
 						<?php
 							require("ubersicht.php");
 						?>
@@ -317,6 +319,7 @@ if (!empty($_POST['UUID']) and !empty($_POST['Minor']) and !empty($_POST['Major'
 
 					<!-- TAB 3 START -->
 					<div id="tab-3">
+					<script>$('#tab-3').load(document.URL +  ' #tab-3');</script>
 						<div class="formBlock big">
 						<h2 class="formBlockHead"> Zuordnung von Beacons zur Maschine</h2>
 						<?php	

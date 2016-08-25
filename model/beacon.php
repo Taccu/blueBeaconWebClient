@@ -99,7 +99,7 @@
 		$abfrage->BindParam(':beacID', $str_geschnitte_id);
 		$abfrage->execute();
 		echo "<br>";
-	//	echo "<script>alert('Die Beacons wurden der Maschine zugeordnet')</script>"; 
+		echo "<script>alert('Die Beacons wurden der Maschine zugeordnet')</script>"; 
 						//echo "<script>$('#tab-3').load(document.URL +  ' #tab-3');
 						// </script>";
 		
@@ -184,7 +184,7 @@ function delMachine($machine_id)
 			$pdo=null;
 			//$db_query = $this->db->query($str_del_bacon_sql);
 		//	$this->db->closedb();
-			echo "<script>alert('Beacon gelöscht')</script>"; 
+			 echo "<script>alert('Beacon gelöscht')</script>"; 
 			
 						//header("Location:".$_SERVER['PHP_SELF']);
 				

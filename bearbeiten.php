@@ -71,7 +71,7 @@
 					$machine_1->changeMaintStatus($str_masch_id, $str_new_maint_stat);
 					$machine_1->changeProdStatus($str_masch_id, $str_new_pord_stat);
 	
-							echo "<script>window.location.reload(); </script>";
+							 echo "<script>$('#tab-4').load(document.URL +  ' #tab-4');</script>";
 	
 				}elseif(!empty($_POST['machine']) and !empty($_POST['mainstat']))
 				{
@@ -81,7 +81,7 @@
 
 					$machine_1->changeMaintStatus($str_masch_id, $str_new_maint_stat);
 
-							echo "<script>window.location.reload(); </script>";
+							echo "<script>$('#tab-4').load(document.URL +  ' #tab-4');</script>";
 										
 				}elseif(!empty($_POST['machine']) and !empty($_POST['prostat']))
 				{
@@ -91,6 +91,6 @@
 
 					$machine_1->changeProdStatus($str_masch_id, $str_new_pord_stat);
 
-							echo "<script>window.location.reload(); </script>";
+							echo "<script>$('#tab-4').load(document.URL +  ' #tab-4');</script>";
 										
 				}
