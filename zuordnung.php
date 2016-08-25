@@ -101,7 +101,7 @@
 					$machine_1->setgeadded($str_masch_id);
 					}
 							//echo "<script>alert('Die Beacons wurden der Maschine zugeordnet')</script>"; 
-												echo "<script>window.location.reload(); </script>";
+											//	echo "<script>window.location.reload(); </script>";
 					
 				}elseif ($zaehl < 2)
 				{
