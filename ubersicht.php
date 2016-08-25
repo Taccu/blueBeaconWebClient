@@ -105,7 +105,7 @@ echo"<div class='formBlock three'> <h2 class='formBlockHead'>Liste zugeordneter 
 			{ 
 				$beacon_1->delMachine($str_geschnitte_id);
 			}
-							echo "<script>window.location.reload(); </script>";
+						//	echo "<script>window.location.reload(); </script>";
 							
 				//			echo "<script>alert('Die Beacons wurden von der Maschine getrennt')</script>"; 
 		}
