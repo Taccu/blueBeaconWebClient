@@ -2,7 +2,8 @@ Web interface for managing bluetooth beacon data. Includes a very simple read-on
 
 In addition, the server-side part of a local service discovery mechanism is included (discovery.php). It should be started in the background at bootup, e.g. by adding the line
 
-```php5 /path/to/discovery.php &
+```
+php5 /path/to/discovery.php &
 ```
 
 to `/etc/rc.local` or by creating a systemd `.service` file.
