@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `Beacon` (
   `BeaconID` int(11) NOT NULL,
-  `UUID` varchar(32) NOT NULL,
+  `UUID` varchar(42) NOT NULL,
   `Major` int(4) NOT NULL,
   `Minor` int(4) NOT NULL,
   `PositionX` double NOT NULL,
