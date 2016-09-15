@@ -31,7 +31,7 @@
    {
 	   	$pdo=$this->db->connection();
 	   
-	   	$str_Beacon_sql = "INSERT INTO Beacon (`BeaconID`, `UUID`, `Major`, `Minor`,`PositionX`, `PositionY`, `MachineID`) VALUES (NULL, :uuid, :major, :minor, :posx, :posy, '')";
+	   	$str_Beacon_sql = "INSERT INTO Beacon (`UUID`, `Major`, `Minor`,`PositionX`, `PositionY`, `MachineID`) VALUES (:uuid, :major, :minor, :posx, :posy, '')";
 	  	$abfrage=$pdo->prepare($str_Beacon_sql);
 	  	$abfrage->bindParam(':uuid', $str_uuid);
 		$abfrage->bindParam(':major',$int_major);

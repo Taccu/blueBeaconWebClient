@@ -22,7 +22,7 @@ private $str_status;
 	  */
 	 public function addMaschine($str_machine_name, $str_machine_descr, $str_machine_prod_stat, $str_machine_maint_stat)
 	 {
-	 	$str_addMachine_sql = "INSERT INTO `Maschine`(`MachineID`, `Name`, `Description`, `Productionstatus`, `Maintenancestatus`) VALUES (NULL, :machname, :machdes, :prodstat, :maintstat)"
+	 	$str_addMachine_sql = "INSERT INTO `Maschine`(`Name`, `Description`, `Productionstatus`, `Maintenancestatus`) VALUES (:machname, :machdes, :prodstat, :maintstat)"
 ;
 	 		$stmt= $this->db->connection();
 		$abfrage=$stmt->prepare($str_addMachine_sql);
