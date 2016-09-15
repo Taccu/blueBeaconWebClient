@@ -36,14 +36,6 @@ CREATE TABLE `Beacon` (
   `MachineID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Daten für Tabelle `Beacon`
---
-
-INSERT INTO `Beacon` (`BeaconID`, `UUID`, `Major`, `Minor`, `PositionX`, `PositionY`, `MachineID`) VALUES
-(2, '456446-455', 5456, 7678, 4.7, 8.9, 0),
-(3, '4545645-566756', 4343, 4546, 7.8, 14.5, 0);
-
 -- --------------------------------------------------------
 
 --
@@ -58,17 +50,6 @@ CREATE TABLE `Maschine` (
   `Maintenancestatus` varchar(40) NOT NULL,
   `Geadded` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Daten für Tabelle `Maschine`
---
-
-INSERT INTO `Maschine` (`MachineID`, `Name`, `Description`, `Productionstatus`, `Maintenancestatus`, `Geadded`) VALUES
-(3, 'hezi', 'geht ab', 'ok', 'ok', 0),
-(4, 'hezi', 'geht ab', 'ok', 'ok', 0),
-(5, 'hezi', 'geht ab', 'ok', 'ok', 0),
-(6, 'hezi', 'geht ab', 'ok', 'ok', 0),
-(7, 'hezi', 'geht ab', 'ok', 'ok', 0);
 
 --
 -- Indizes der exportierten Tabellen
