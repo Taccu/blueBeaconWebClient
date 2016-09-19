@@ -33,7 +33,8 @@
 	   
 	   	$str_Beacon_sql = "INSERT INTO Beacon (`UUID`, `Major`, `Minor`,`PositionX`, `PositionY`, `MachineID`) VALUES (:uuid, :major, :minor, :posx, :posy, '')";
 	  	$abfrage=$pdo->prepare($str_Beacon_sql);
-	  	$abfrage->bindParam(':uuid', $str_uuid);
+		//print($str_uuid);
+		$abfrage->bindParam(':uuid', $str_uuid);
 		$abfrage->bindParam(':major',$int_major);
 		$abfrage->bindParam(':minor',$int_minor);
 		$abfrage->bindParam(':posx',$double_posx);

@@ -43,6 +43,7 @@ echo"<div class='formBlock three'> <h2 class='formBlockHead'>Liste zugeordneter 
 			</tr>
 			</table>
 			</div>
+			
 			 			
 			 			";
 			}
@@ -91,7 +92,8 @@ echo"<div class='formBlock three'> <h2 class='formBlockHead'>Liste zugeordneter 
 		</table>
 		<input class='btn del' type='submit' value='Löschen' onsubmit='window.location.reload()' />
 	</form>
-	</div>";
+	</div>
+	<div class='clear'></div>";
 	//Löschvorgang
 		if(!empty($_POST['del']))
 		{

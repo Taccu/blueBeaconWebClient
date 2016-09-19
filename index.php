@@ -12,9 +12,19 @@ if (!empty($_POST['UUID']) and !empty($_POST['Minor']) and !empty($_POST['Major'
 {
 	
 		
-	$str_uuid = $_POST['UUID'];	
+	$str_uuid = $_POST['UUID'];
 	$int_minor = $_POST['Minor'];
+	// Minor transformation
+		$int_minor = (int)$int_minor;
+		
 	$int_major =$_POST['Major'] ;
+	// Major transformation
+		$int_major = (int)$int_major;
+	
+	// UUID transformation
+		$str_uuid = strtolower($str_uuid);
+		$str_uuid = $str_uuid."-".(string)$int_major."-".(string)$int_minor;
+	
 	$double_posx =$_POST['posx'] ;
 	$double_posy =$_POST['posy'] ;
 	$beacon_1->addBeacon($str_uuid,$int_minor,$int_major, $double_posx, $double_posy);
