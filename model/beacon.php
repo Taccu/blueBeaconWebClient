@@ -203,6 +203,23 @@ function delMachine($machine_id)
 		return $db_query;
 	}	
 		
-		
+	/** 
+	*Hole alle Beacons
+	* 
+	*/
+	function getallBeacons()
+	{
+		$int_id=0;
+		$pdo=$this->db->connection();
+		$abfrage=$pdo->query('SELECT * FROM Beacon');
+		//$abfrage->bindParam(':mach_id', $int_id);
+		//$result=$abfrage->execute();
+		$result=$abfrage->fetchAll();
+		$pdo=null;
+		return $result;
+		//$get_ID_sql = "SELECT * FROM Beacon where machine =:mach_id";
+		//$db_query = $this->db->query($get_ID_sql);
+		//$this->db->closedb(); 
+	}	
     }
     
