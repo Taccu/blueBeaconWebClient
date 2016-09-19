@@ -31,10 +31,9 @@
    {
 	   	$pdo=$this->db->connection();
 	   
-	   	$str_Beacon_sql = "INSERT INTO Beacon (`UUID`, `Major`, `Minor`,`PositionX`, `PositionY`, `MachineID`) VALUES (:uuid, :major, :minor, :posx, :posy, '')";
+	   	$str_Beacon_sql = "INSERT INTO Beacon (`uuid`, `major`, `minor`,`x`, `y`) VALUES (:uuid, :major, :minor, :posx, :posy)";
 	  	$abfrage=$pdo->prepare($str_Beacon_sql);
-		//print($str_uuid);
-		$abfrage->bindParam(':uuid', $str_uuid);
+	  	$abfrage->bindParam(':uuid', $str_uuid);
 		$abfrage->bindParam(':major',$int_major);
 		$abfrage->bindParam(':minor',$int_minor);
 		$abfrage->bindParam(':posx',$double_posx);
@@ -42,33 +41,12 @@
 	  	$abfrage->execute();
 		echo "<script>alert('Beacon hinzugefügt')</script>"; 
    }
- 
-		
-	/** 
-	 *Alle Beacons die Löschbar sind 
-	 * 
-	 */
-	function getallBeacons()
-	{
-	$int_id=0;
-		$pdo=$this->db->connection();
-		 $abfrage=$pdo->query('SELECT * FROM Beacon where MachineID= 0');
-		//$abfrage->bindParam(':mach_id', $int_id);
-		//$result=$abfrage->execute();
-	$result=$abfrage->fetchAll();
-	$pdo=null;
-	return $result;
-		//$get_ID_sql = "SELECT * FROM Beacon where MachineID =:mach_id";
-		//$db_query = $this->db->query($get_ID_sql);
-		//$this->db->closedb();			
-				
-	}
-	
+   
 	function countBeac()
 	{
 		$pdo=$this->db->connection();
 		$int_id=0;
-		$abfrage=$pdo->prepare('SELECT Count(*) FROM Beacon where MachineID= :intID');
+		$abfrage=$pdo->prepare('SELECT Count(*) FROM bb_mapping where machine= :intID');
 		$abfrage->bindParam(':intID', $int_id);
 	$abfrage->execute();
 			$result= $abfrage->fetchColumn();
@@ -80,12 +58,18 @@
 	{
 		$pdo=$this->db->connection();
 		$int_id=0;
-		$abfrage=$pdo->prepare('SELECT Count(*) FROM Beacon where MachineID!= :intID');
+		$abfrage=$pdo->prepare('SELECT Count(*) FROM beacon');
 		$abfrage->bindParam(':intID', $int_id);
+		
 	$abfrage->execute();
 			$result= $abfrage->fetchColumn();
 			return $result;
 			$pdo=null;
+	}
+	
+	function countBeacons() 
+	{
+		return $this->countBeacSet() - $this->countBeac();
 	}
 	
 	/**
@@ -93,7 +77,8 @@
 	 */
 	function setMachine($str_masch_id, $str_geschnitte_id)
 	{
-		$str_add_machine_to_beacon="UPDATE Beacon SET MachineID=:machID WHERE BeaconID=:beacID";
+		$str_add_machine_to_beacon="INSERT INTO bb_mapping (`machine`,`beacon`) VALUES (:machID,:beacID)";
+		//"UPDATE Beacon SET MachineID=:machID WHERE BeaconID=:beacID";
 		$pdo=$this->db->connection();
 		$abfrage=$pdo->prepare($str_add_machine_to_beacon);
 		$abfrage->BindParam(':machID', $str_masch_id);
@@ -114,8 +99,20 @@
 	{
 		$pdo=$this->db->connection();
 			
-		$get_all_beacons_with_machines_sql= "SELECT m.MachineID, m.Name, b.UUID, b.Minor, b.Major from Maschine m
-		INNER JOIN Beacon b ON m.MachineID =b.MachineID order by m.MachineID";
+		$get_all_beacons_with_machines_sql= "SELECT uuid,major,minor,machine,beacon,`name`
+						FROM
+						(
+						(SELECT *
+						FROM(
+						(SELECT machine as m, beacon as b FROM bb_mapping) as x
+						LEFT JOIN
+						(SELECT * from machines) as y
+						ON x.m = y.machine)) AS o
+						LEFT JOIN
+						(SELECT * FROM beacons) AS p
+						ON o.b = p.beacon)";
+		//"SELECT m.MachineID, m.Name, b.UUID, b.Minor, b.Major from Maschine m
+		//INNER JOIN Beacon b ON m.MachineID =b.MachineID order by m.MachineID";
 		
 		 $db_query=$pdo->query($get_all_beacons_with_machines_sql);
 	$pdo=null;
@@ -134,7 +131,7 @@
 function delMachine($machine_id)
 	{
 		$pdo=$this->db->connection();
-				$str_del_machine_from_beacon="UPDATE Beacon SET MachineID=0 WHERE MachineID=:machID";
+				$str_del_machine_from_beacon="DELETE FROM machine WHERE machine=:machID";
 		
 		$abfrage=$pdo->prepare($str_del_machine_from_beacon);
 		$abfrage->BindParam(':machID', $machine_id);
@@ -155,7 +152,9 @@ function delMachine($machine_id)
 	{
 		$pdo=$this->db->connection();
 		
-		$str_get_beacon_machinde_ID_sql="SELECT * From Beacon where MachineID=:machID";
+			$str_get_beacon_machinde_ID_sql="SELECT *
+							FROM beacons
+							WHERE beacon IN (SELECT beacon FROM bb_mapping WHERE machine = :machID);";
 		$abfrage=$pdo->prepare($str_get_beacon_machinde_ID_sql);
 		$abfrage->BindParam(':machID', $machine_id);
 		 $abfrage->execute();
@@ -178,7 +177,7 @@ function delMachine($machine_id)
 			$pdo=$this->db->connection();
 				
 			
-			$str_del_bacon_sql = "DELETE from Beacon where BeaconID=:beacID";
+			$str_del_bacon_sql = "DELETE from Beacon where beacon=:beacID";
 			$abfrage=$pdo->prepare($str_del_bacon_sql);
 			$abfrage->BindParam(':beacID', $int_beacon_id);
 			$abfrage->execute();
