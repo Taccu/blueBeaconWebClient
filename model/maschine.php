@@ -22,7 +22,7 @@ private $str_status;
 	  */
 	 public function addMaschine($str_machine_name, $str_machine_descr, $str_machine_prod_stat, $str_machine_maint_stat)
 	 {
-	 	$str_addMachine_sql = "INSERT INTO `Maschine`(`Name`, `Description`, `Productionstatus`, `Maintenancestatus`) VALUES (:machname, :machdes, :prodstat, :maintstat)"
+	 	$str_addMachine_sql = "INSERT INTO `machines`(`name`, `description`, `prodstatus`, `maintenancestatus`) VALUES (:machname, :machdes, :prodstat, :maintstat)"
 ;
 	 		$stmt= $this->db->connection();
 		$abfrage=$stmt->prepare($str_addMachine_sql);
@@ -43,7 +43,7 @@ private $str_status;
 	 {
 	 	$pdo=$this->db->connection();
 		$int_id=0;
-		$abfrage=$pdo->query('SELECT * FROM Maschine where Geadded=0');
+		$abfrage=$pdo->query('SELECT * FROM machines');
 		//$abfrage->bindParam(':intID', $int_id);
 		//$abfrage->execute();
 		$result= $abfrage->fetchAll();
@@ -60,7 +60,7 @@ private $str_status;
 	 {
 	 $pdo=$this->db->connection();
 		$int_id=0;
-		$abfrage=$pdo->query('SELECT Count(*) FROM Maschine where Geadded= 0');
+		$abfrage=$pdo->query('SELECT Count(*) FROM machines');
 		$abfrage->bindParam(':intID', $int_id);
 	$abfrage->execute();
 			$result= $abfrage->fetchColumn();
@@ -68,47 +68,13 @@ private $str_status;
 			$pdo=null;
 			
 	 }	
-	 	
-	 
-	 /**
-	  * Ein Maschine wird als zugeordnet geflaggt
-	  */
-	 function setgeadded($str_machineID)
-	 {
-	 	$str_set_geadded_sql="UPDATE Maschine SET Geadded=1 WHERE MachineID=:machID";
-		$pdo=$this->db->connection();
-		$abfrage=$pdo->prepare($str_set_geadded_sql);
-		$abfrage->BindParam(':machID', $str_machineID);
-		$abfrage->execute();
-		//$pdo->query($str_set_geadded_sql);
-		//$this->db->closedb();
-		
-		$pdo=null;
-	 }
-	 
-	 /**
-	  * Trennen der Zurodnung
-	  */
-	 function revertgeadded($str_machineID)
-	 {
-	 	$str_revert_geadded_sql="UPDATE Maschine SET Geadded=0 WHERE MachineID=:machID";
-		$pdo=$this->db->connection();
-		$abfrage = $pdo->prepare($str_revert_geadded_sql);
-		$abfrage->bindParam(":machID", $str_machineID);
-		$abfrage->execute();
-		
-		$pdo=null;
-		//$this->db->closedb();
-	//	echo"<script>$('#tab-2').load(document.URL +  ' #tab-2'); </script>";
-		//header("Location:".$_SERVER['PHP_SELF']);
-	 }
 	 
 	 /**
 	  * Löschen einer Maschine aus der Datenbank
 	  */
 	 function deleteMachine($int_machine_id)
 		{
-			$str_del_bacon_sql = "DELETE from Maschine where MachineID=:machID";
+			$str_del_bacon_sql = "DELETE from machines where machine=:machID";
 			$pdo=$this->db->connection();
 			$abfrage=$pdo->prepare($str_del_bacon_sql);
 			$abfrage->BindParam(':machID', $int_machine_id);
@@ -123,7 +89,7 @@ private $str_status;
 		
 		function changeMaintStatus($mach_id, $str_maint_stat)
 		{
-			$str_change_maint_stat_sql ="UPDATE Maschine SET Maintenancestatus=:maintStat WHERE MachineID=:machID";
+			$str_change_maint_stat_sql ="UPDATE machines SET maintenancestatus=:maintStat WHERE machine=:machID";
 			$pdo=$this->db->connection();
 			$abfrage=$pdo->prepare($str_change_maint_stat_sql);
 			$abfrage->BindParam(':machID', $mach_id);
@@ -134,7 +100,7 @@ private $str_status;
 		
 		function changeProdStatus($mach_id, $str_prod_stat)
 			{
-				$str_change_prod_stat_sql ="UPDATE Maschine SET Productionstatus=:prodStat WHERE MachineID=:machID";
+				$str_change_prod_stat_sql ="UPDATE machines SET Productionstatus=:prodStat WHERE machine=:machID";
 				$pdo=$this->db->connection();
 				$abfrage=$pdo->prepare($str_change_prod_stat_sql);
 				$abfrage->BindParam(':machID', $mach_id);
@@ -149,7 +115,7 @@ private $str_status;
 	 */
 	function getjsonData()
 	{
-		$get_ID_sql = "SELECT * FROM Maschine";
+		$get_ID_sql = "SELECT * FROM machines";
 			$pdo=$this->db->connection();
 			
 			$db_query =$pdo->query($get_ID_sql);
