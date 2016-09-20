@@ -99,7 +99,7 @@
 	{
 		$pdo=$this->db->connection();
 			
-		$get_all_beacons_with_machines_sql= "SELECT uuid,major,minor,machines,beacons,`name`
+		$get_all_beacons_with_machines_sql= "SELECT uuid,major,minor,machine,beacon,`name`
 						FROM
 						(
 						(SELECT *

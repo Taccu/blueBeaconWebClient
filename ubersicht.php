@@ -15,11 +15,11 @@ echo"<div class='formBlock three'> <h2 class='formBlockHead'>Liste zugeordneter 
 		foreach ($query as $line => $arr) 
 		{
 			
-		$mach_id=$arr['MachineID'];
-		$mach_name=$arr['Name'];
-		$mach_uuid=$arr['UUID'];
-		$mach_Minor=$arr['Minor'];
-		$mach_Major=$arr['Major'];
+		$mach_id=$arr['machine'];
+		$mach_name=$arr['mame'];
+		$mach_uuid=$arr['uuid'];
+		$mach_Minor=$arr['minor'];
+		$mach_Major=$arr['major'];
 			
 			echo"
 			<div class='machineInfo'>
