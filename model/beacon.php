@@ -57,14 +57,12 @@
 	function countBeacSet()
 	{
 		$pdo=$this->db->connection();
-		$int_id=0;
 		$abfrage=$pdo->prepare('SELECT Count(*) FROM beacons');
-		$abfrage->bindParam(':intID', $int_id);
 		
-	$abfrage->execute();
-			$result= $abfrage->fetchColumn();
-			return $result;
-			$pdo=null;
+		$abfrage->execute();
+		$result= $abfrage->fetchColumn();
+		return $result;
+		$pdo=null;
 	}
 	
 	function countBeacons() 

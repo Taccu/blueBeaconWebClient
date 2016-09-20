@@ -73,7 +73,7 @@ if (!empty($_POST['UUID']) and !empty($_POST['Minor']) and !empty($_POST['Major'
 	//Auflistung alles zur Löschung verfügbaren Beacons
 	function allBeaconsList($obj_beacon)
 	{
-		$countBeac = $obj_beacon->countBeac();
+		$countBeac = $obj_beacon->countBeacSet();
 		 $allBeacons = $obj_beacon->getallBeacons();
 		$num= $countBeac;
 	
