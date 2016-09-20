@@ -20,12 +20,12 @@
 	
 		foreach ($allBeacons as $line => $arr) 
 		{
-				$beac_id=$arr['BeaconID'];
-				$uuid=$arr['UUID'];
-				$minor= $arr['Minor'];
-				$major = $arr['Major'];
-				$posx= $arr['PositionX'];
-				$posy = $arr['PositionY'];
+				$beac_id=$arr['beacon'];
+				$uuid=$arr['uuid'];
+				$minor= $arr['minor'];
+				$major = $arr['major'];
+				$posx= $arr['x'];
+				$posy = $arr['y'];
 				
 					 echo "<option>$beac_id $uuid $minor $major $posx $posy</option>" ;
 				
@@ -58,11 +58,11 @@
 		{	echo "<option selected='selected' disabled='disabled'>Bitte auswählen</option>";				
 			foreach ($allMachines as $line => $arr) 
 			{
-				$mach_id= $arr['MachineID'];	
-				$mach_name =$arr['Name'];
-				$mach_descr = $arr['Description'];
-				$mach_pord_stat = $arr['Productionstatus'];
-				$mach_maint_stat =  $arr['Maintenancestatus'];
+				$mach_id= $arr['machine'];	
+				$mach_name =$arr['name'];
+				$mach_descr = $arr['description'];
+				$mach_pord_stat = $arr['prodstatus'];
+				$mach_maint_stat =  $arr['maintenancestatus'];
 				 echo "<option>$mach_id $mach_name $mach_descr $mach_pord_stat $mach_maint_stat</option>" ;
 			}
 		}else

@@ -40,11 +40,11 @@
 		{	echo "<option selected='selected' disabled='disabled'>Bitte auswählen</option>";				
 			foreach ($allMachines as $line => $arr) 
 			{
-				$mach_id= $arr['MachineID'];	
-				$mach_name =$arr['Name'];
-				$mach_descr = $arr['Description'];
-				$mach_pord_stat = $arr['Productionstatus'];
-				$mach_maint_stat =  $arr['Maintenancestatus'];
+				$mach_id= $arr['machine'];
+				$mach_name =$arr['name'];
+				$mach_descr = $arr['description'];
+				$mach_pord_stat = $arr['prodstatus'];
+				$mach_maint_stat =  $arr['maintenancestatus'];
 				 echo "<option>$mach_id $mach_name $mach_descr $mach_pord_stat $mach_maint_stat</option>" ;
 			}
 		}else

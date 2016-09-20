@@ -86,12 +86,12 @@ if (!empty($_POST['UUID']) and !empty($_POST['Minor']) and !empty($_POST['Major'
 		echo "<option selected='selected' disabled='disabled'>Bitte auswählen</option>";
 		foreach ($allBeacons as $line => $arr) 
 		{
-				$beac_id=$arr['BeaconID'];
-				$uuid=$arr['UUID'];
-				$minor= $arr['Minor'];
-				$major = $arr['Major'];
-				$posx= $arr['PositionX'];
-				$posy = $arr['PositionY'];
+				$beac_id=$arr['beacon'];
+				$uuid=$arr['uuid'];
+				$minor= $arr['minor'];
+				$major = $arr['major'];
+				$posx= $arr['x'];
+				$posy = $arr['y'];
 				
 					 echo "<option>$beac_id $uuid $minor $major $posx $posy</option>" ;
 				
