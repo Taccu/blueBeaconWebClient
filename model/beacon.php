@@ -191,7 +191,7 @@ function delMachine($machine_id)
 	/**	
 	 * Alle Becons für die json ausgabe
 	 */
-	function getjsondata()
+	function getJSONData()
 	{
 		$pdo=$this->db->connection();	
 		$str_get_beacon_machinde_ID_sql="SELECT * FROM beacons";

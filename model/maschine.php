@@ -113,7 +113,7 @@ private $str_status;
 	/**
 	 * Alle Maschinen für die Json Ausgabe
 	 */
-	function getjsonData()
+	function getJSONData()
 	{
 		$get_ID_sql = "SELECT * FROM machines";
 			$pdo=$this->db->connection();
