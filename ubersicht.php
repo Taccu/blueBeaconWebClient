@@ -101,7 +101,6 @@ echo"<div class='formBlock three'> <h2 class='formBlockHead'>Liste zugeordneter 
 			$str_geschnitte_id =  substr($auswahl,0,strpos($auswahl," "));
 			$query_anzahl= $beacon_1->getBeaconWtihMachineID($str_geschnitte_id);
 			
-			$machine_1->revertgeadded($str_geschnitte_id);
 			//löschen der mascchienID in den Beacons
 			for ($i=0; $i < $query_anzahl ; $i++) 
 			{ 

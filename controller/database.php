@@ -9,7 +9,7 @@ Class Database
 {
 	private $str_user ='myuser';
 	private $str_pw  = "";
-	private $dsn="mysql:host=localhost;dbname=blueBacon";
+	private $dsn="mysql:host=localhost;dbname=bluebacon";
 	
 function __construct()
 	{

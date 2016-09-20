@@ -98,7 +98,6 @@
 					$str_id = $ids;
 					$str_geschnitte_id =  substr($str_id,0,strpos($str_id," "));
 					  $beacon_1->setMachine($str_masch_id, $str_geschnitte_id);	
-					$machine_1->setgeadded($str_masch_id);
 					}
 					
 						echo "<script>$('#tab-3').load(document.URL +  ' #tab-3');</script>";

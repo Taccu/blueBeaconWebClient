@@ -31,7 +31,7 @@
    {
 	   	$pdo=$this->db->connection();
 	   
-	   	$str_Beacon_sql = "INSERT INTO Beacon (`uuid`, `major`, `minor`,`x`, `y`) VALUES (:uuid, :major, :minor, :posx, :posy)";
+	   	$str_Beacon_sql = "INSERT INTO beacons (`uuid`, `major`, `minor`,`x`, `y`) VALUES (:uuid, :major, :minor, :posx, :posy)";
 	  	$abfrage=$pdo->prepare($str_Beacon_sql);
 	  	$abfrage->bindParam(':uuid', $str_uuid);
 		$abfrage->bindParam(':major',$int_major);
@@ -58,7 +58,7 @@
 	{
 		$pdo=$this->db->connection();
 		$int_id=0;
-		$abfrage=$pdo->prepare('SELECT Count(*) FROM beacon');
+		$abfrage=$pdo->prepare('SELECT Count(*) FROM beacons');
 		$abfrage->bindParam(':intID', $int_id);
 		
 	$abfrage->execute();
@@ -99,7 +99,7 @@
 	{
 		$pdo=$this->db->connection();
 			
-		$get_all_beacons_with_machines_sql= "SELECT uuid,major,minor,machine,beacon,`name`
+		$get_all_beacons_with_machines_sql= "SELECT uuid,major,minor,machines,beacons,`name`
 						FROM
 						(
 						(SELECT *
@@ -131,7 +131,7 @@
 function delMachine($machine_id)
 	{
 		$pdo=$this->db->connection();
-				$str_del_machine_from_beacon="DELETE FROM machine WHERE machine=:machID";
+				$str_del_machine_from_beacon="DELETE FROM machines WHERE machine=:machID";
 		
 		$abfrage=$pdo->prepare($str_del_machine_from_beacon);
 		$abfrage->BindParam(':machID', $machine_id);
@@ -177,7 +177,7 @@ function delMachine($machine_id)
 			$pdo=$this->db->connection();
 				
 			
-			$str_del_bacon_sql = "DELETE from Beacon where beacon=:beacID";
+			$str_del_bacon_sql = "DELETE from beacons where beacon=:beacID";
 			$abfrage=$pdo->prepare($str_del_bacon_sql);
 			$abfrage->BindParam(':beacID', $int_beacon_id);
 			$abfrage->execute();
@@ -196,7 +196,7 @@ function delMachine($machine_id)
 	function getjsondata()
 	{
 		$pdo=$this->db->connection();	
-		$str_get_beacon_machinde_ID_sql="SELECT * From Beacon";
+		$str_get_beacon_machinde_ID_sql="SELECT * FROM beacons";
 		$db_query = $pdo->query($str_get_beacon_machinde_ID_sql);
 		$pdo=null;
 	//	$this->db->closedb();		
@@ -211,7 +211,7 @@ function delMachine($machine_id)
 	{
 		$int_id=0;
 		$pdo=$this->db->connection();
-		$abfrage=$pdo->query('SELECT * FROM Beacon');
+		$abfrage=$pdo->query('SELECT * FROM beacons');
 		//$abfrage->bindParam(':mach_id', $int_id);
 		//$result=$abfrage->execute();
 		$result=$abfrage->fetchAll();
