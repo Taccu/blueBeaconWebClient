@@ -129,7 +129,7 @@
 function delMachine($machine_id)
 	{
 		$pdo=$this->db->connection();
-				$str_del_machine_from_beacon="DELETE FROM machines WHERE machine=:machID";
+				$str_del_machine_from_beacon="DELETE FROM bb_mapping WHERE machine=:machID";
 		
 		$abfrage=$pdo->prepare($str_del_machine_from_beacon);
 		$abfrage->BindParam(':machID', $machine_id);
