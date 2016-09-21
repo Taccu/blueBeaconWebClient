@@ -7,7 +7,7 @@
 			<tr>
 			<th><label for='beacons[]'>Beacons:</label></th>
 			<td><select id='beacons[]' multiple name='beacons[]' >";
-		$countBeac = $beacon_1->countBeac();
+		$countBeac = $beacon_1->countBeacons();
 		$allBeacons = $beacon_1->getallBeacons();
 		$num= $countBeac;
 	
